@@ -35,7 +35,7 @@ export default function App() {
   }, []);
 
   useEffect(() => {
-    if (session) {
+    if (session) {cat .gitignore | grep env
       loadNotes();
       loadFolders();
     }
