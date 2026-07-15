@@ -248,7 +248,114 @@ button:focus-visible {
   color: var(--ink-soft);
   max-width: 22rem;
 }
+.chips {
+  display: flex;
+  gap: 6px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+  margin-bottom: 1rem;
+  -webkit-overflow-scrolling: touch;
+}
+.chips::-webkit-scrollbar {
+  display: none;
+}
 
+.chip-active {
+  background: var(--accent);
+  color: #f7f4ee;
+  border-color: var(--accent);
+}
+.chip-add {
+  color: var(--ink-soft);
+  border-style: dashed;
+}
+.folder-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 1rem;
+}
+.fpill {
+  font-family: inherit;
+  font-size: 0.8rem;
+  min-height: 32px;
+  padding: 0 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink-soft);
+  cursor: pointer;
+}
+.fpill-active {
+  background: var(--accent);
+  color: #f7f4ee;
+  border-color: var(--accent);
+}
+.fpill-add {
+  color: var(--ink-soft);
+  border-style: dashed;
+}
+.fpill-input {
+  font-family: inherit;
+  font-size: 0.8rem;
+  min-height: 32px;
+  width: 120px;
+  padding: 0 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--card);
+  color: var(--ink);
+  outline: none;
+}
+.chip-input {
+  flex: 0 0 auto;
+  font-family: inherit;
+  font-size: 0.85rem;
+  min-height: 36px;
+  width: 130px;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--accent);
+  background: var(--card);
+  color: var(--ink);
+  outline: none;
+}
+.chip-input::placeholder {
+  color: var(--ink-soft);
+}
+.chip {
+  flex: 0 0 auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: inherit;
+  font-size: 0.85rem;
+  min-height: 36px;
+  padding: 0 0.9rem;
+  border-radius: 999px;
+  border: 1px solid var(--rule);
+  background: var(--card);
+  color: var(--ink);
+  cursor: pointer;
+  white-space: nowrap;
+}
+.chip-del {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 16px;
+  height: 16px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  line-height: 1;
+  opacity: 0.7;
+}
+.chip-del:hover {
+  opacity: 1;
+}
+.note-folder {
+  color: var(--accent);
+}
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
