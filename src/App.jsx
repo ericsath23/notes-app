@@ -18,7 +18,7 @@ export default function App() {
   const [notes, setNotes] = useState([]);
   const [editing, setEditing] = useState(null);
   const [saveState, setSaveState] = useState("saved");
-
+  const [query, setQuery] = useState("");
   useEffect(() => {
     supabase.auth.getSession().then(({ data }) => setSession(data.session));
     const { data: sub } = supabase.auth.onAuthStateChange((_e, s) =>
@@ -130,7 +130,13 @@ export default function App() {
       </div>
     );
   }
-
+  const q = query.trim().toLowerCase();
+  const visible = q
+    ? notes.filter(
+        (n) =>
+          n.title.toLowerCase().includes(q) || n.body.toLowerCase().includes(q),
+      )
+    : notes;
   return (
     <div className="app">
       <div className="topbar">
@@ -144,15 +150,28 @@ export default function App() {
           </button>
         </div>
       </div>
-
-      {notes.length === 0 ? (
+      {notes.length > 0 && (
+        <input
+          className="search"
+          value={query}
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Search notes…"
+        />
+      )}
+      {visible.length === 0 ? (
         <div className="empty">
-          <div className="empty-title">Nothing here yet</div>
-          <div>Tap New note to write your first one.</div>
+          <div className="empty-title">
+            {q ? "No matches" : "Nothing here yet"}
+          </div>
+          <div>
+            {q
+              ? "Try a different word."
+              : "Tap New note to write your first one."}
+          </div>
         </div>
       ) : (
         <div className="notes">
-          {notes.map((note) => (
+          {visible.map((note) => (
             <div
               key={note.id}
               className="note"
