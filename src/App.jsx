@@ -245,7 +245,7 @@ export default function App() {
       <div className="topbar">
         <h1 className="brand">Notes</h1>
         <div className="actions">
-          <button className="btn-primary" onClick={createNote}>
+          <button className="btn-primary desktop-only" onClick={createNote}>
             New note
           </button>
           <button className="btn-ghost" onClick={signOut}>
@@ -362,6 +362,18 @@ export default function App() {
           ))}
         </div>
       )}
+      <button className="fab" onClick={createNote} aria-label="New note">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="2"
+          strokeLinecap="round"
+        >
+          <line x1="12" y1="5" x2="12" y2="19" />
+          <line x1="5" y1="12" x2="19" y2="12" />
+        </svg>
+      </button>
     </div>
   );
 }

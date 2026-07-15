@@ -356,8 +356,46 @@ button:focus-visible {
 .note-folder {
   color: var(--accent);
 }
+.app {
+  padding-bottom: 6rem;
+}
+.fab {
+  position: fixed;
+  right: calc(1.25rem + env(safe-area-inset-right));
+  bottom: calc(1.25rem + env(safe-area-inset-bottom));
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: none;
+  background: var(--accent);
+  color: #f7f4ee;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(42, 40, 34, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.1s ease;
+  padding: 0;
+}
+.fab svg {
+  width: 24px;
+  height: 24px;
+}
+.fab:active {
+  transform: scale(0.94);
+}
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
+  }
+}
+@media (min-width: 600px) {
+  .fab {
+    display: none;
+  }
+}
+@media (max-width: 599px) {
+  .desktop-only {
+    display: none;
   }
 }
