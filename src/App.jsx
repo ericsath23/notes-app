@@ -59,6 +59,17 @@ export default function App() {
     return () => clearTimeout(timer);
   }, [editing]);
 
+  useEffect(() => {
+    if (editing) {
+      window.history.pushState({ editing: true }, "");
+      const onPop = () => {
+        setEditing(null);
+        loadNotes();
+      };
+      window.addEventListener("popstate", onPop);
+      return () => window.removeEventListener("popstate", onPop);
+    }
+  }, [editing]);
   async function signIn() {
     await supabase.auth.signInWithOAuth({ provider: "google" });
   }
@@ -130,8 +141,7 @@ export default function App() {
   }
 
   function closeEditor() {
-    setEditing(null);
-    loadNotes();
+    window.history.back();
   }
   async function deleteFolder(id) {
     const folder = folders.find((f) => f.id === id);
